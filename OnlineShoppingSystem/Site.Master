@@ -1,0 +1,140 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="OnlineShoppingSystem.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - ShopEase Modern Online Shopping</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Project Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Site Header & Sticky Navbar -->
+        <header class="site-header">
+            <div class="container">
+                <nav class="navbar">
+                    <!-- Brand Logo -->
+                    <a href="Default.aspx" class="brand-logo">
+                        <div class="brand-icon">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <span>Shop<span class="highlight">Ease</span></span>
+                    </a>
+
+                    <!-- Navigation Links -->
+                    <ul class="nav-menu">
+                        <li><a href="Default.aspx" class="nav-link">Home</a></li>
+                        <li><a href="Products.aspx" class="nav-link">Products</a></li>
+                        <li><a href="Products.aspx?cat=1" class="nav-link">Categories</a></li>
+                        <asp:PlaceHolder ID="phAdminLink" runat="server" Visible="false">
+                            <li><a href="Admin/Dashboard.aspx" class="nav-link" style="color: #2563eb; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Admin Panel</a></li>
+                        </asp:PlaceHolder>
+                    </ul>
+
+                    <!-- Right Action Items (Cart & Account) -->
+                    <div class="nav-actions">
+                        <!-- Shopping Cart Link with Badge -->
+                        <a href="Cart.aspx" class="cart-btn" title="View Cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="cart-badge"><asp:Literal ID="litCartCount" runat="server" Text="0"></asp:Literal></span>
+                        </a>
+
+                        <!-- User State: Logged In -->
+                        <asp:Panel ID="pnlLoggedIn" runat="server" Visible="false" CssClass="flex items-center gap-2">
+                            <a href="Profile.aspx" class="user-badge">
+                                <i class="fa-solid fa-circle-user" style="color: var(--accent);"></i>
+                                <asp:Literal ID="litUserName" runat="server"></asp:Literal>
+                            </a>
+                            <a href="Logout.aspx" class="btn btn-outline btn-sm" title="Log Out">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </asp:Panel>
+
+                        <!-- User State: Guest / Not Logged In -->
+                        <asp:Panel ID="pnlAnonymous" runat="server" Visible="true" CssClass="flex items-center gap-2">
+                            <a href="Login.aspx" class="btn btn-outline btn-sm">Login</a>
+                            <a href="Register.aspx" class="btn btn-primary btn-sm">Register</a>
+                        </asp:Panel>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Page Content Holder -->
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <!-- Site Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="brand-logo" style="color: #ffffff; margin-bottom: 12px;">
+                            <div class="brand-icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <span>Shop<span class="highlight">Ease</span></span>
+                        </div>
+                        <p>Discover products you'll love. Premium quality essentials, fast shipping, and guaranteed buyer protection.</p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Explore</h5>
+                        <ul class="footer-links">
+                            <li><a href="Default.aspx">Home</a></li>
+                            <li><a href="Products.aspx">All Products</a></li>
+                            <li><a href="Products.aspx?cat=1">Electronics</a></li>
+                            <li><a href="Products.aspx?cat=2">Fashion</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Customer Care</h5>
+                        <ul class="footer-links">
+                            <li><a href="Profile.aspx">My Account</a></li>
+                            <li><a href="Cart.aspx">Shopping Cart</a></li>
+                            <li><a href="Products.aspx">Track Orders</a></li>
+                            <li><a href="#">Support Center</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Safe & Secure</h5>
+                        <p style="font-size: 0.88rem; margin-bottom: 14px;">We provide 100% secure payment checkout and friendly 24/7 customer service.</p>
+                        <div class="flex gap-2" style="font-size: 1.4rem; color: #cbd5e1;">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-google-pay"></i>
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div>&copy; <%: DateTime.Now.Year %> ShopEase Online Shopping System. Built with ASP.NET Web Forms &amp; C#.</div>
+                    <div class="flex gap-4">
+                        <a href="#" style="color: #94a3b8;">Privacy Policy</a>
+                        <a href="#" style="color: #94a3b8;">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

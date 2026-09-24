@@ -1,0 +1,103 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.Master.cs" Inherits="OnlineShoppingSystem.Admin.AdminMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - ShopEase Admin Panel</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Project Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="formAdmin" runat="server">
+        <div class="admin-wrapper">
+            <!-- Admin Sidebar Navigation -->
+            <aside class="admin-sidebar">
+                <a href="Dashboard.aspx" class="brand-logo" style="color: #ffffff; margin-bottom: 30px; display: flex;">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <span>Shop<span class="highlight">Admin</span></span>
+                </a>
+
+                <h4>Management</h4>
+                <ul class="admin-nav">
+                    <li class="admin-nav-item">
+                        <a href="Dashboard.aspx" class="admin-nav-link">
+                            <i class="fa-solid fa-chart-pie" style="width: 20px;"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="ManageProducts.aspx" class="admin-nav-link">
+                            <i class="fa-solid fa-box-open" style="width: 20px;"></i> Manage Products
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="AddProduct.aspx" class="admin-nav-link">
+                            <i class="fa-solid fa-plus-circle" style="width: 20px;"></i> Add Product
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="ManageOrders.aspx" class="admin-nav-link">
+                            <i class="fa-solid fa-truck-fast" style="width: 20px;"></i> Manage Orders
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="ManageUsers.aspx" class="admin-nav-link">
+                            <i class="fa-solid fa-users" style="width: 20px;"></i> Manage Users
+                        </a>
+                    </li>
+                </ul>
+
+                <h4>Store Navigation</h4>
+                <ul class="admin-nav">
+                    <li class="admin-nav-item">
+                        <a href="../Default.aspx" class="admin-nav-link">
+                            <i class="fa-solid fa-store" style="width: 20px;"></i> Customer Store
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="../Logout.aspx" class="admin-nav-link" style="color: #f87171;">
+                            <i class="fa-solid fa-arrow-right-from-bracket" style="width: 20px;"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Admin Content Container -->
+            <main class="admin-main">
+                <!-- Topbar Info -->
+                <div class="flex items-center justify-between" style="margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color);">
+                    <div>
+                        <h2 style="font-size: 1.6rem; color: var(--primary);">
+                            <asp:Literal ID="litPageHeader" runat="server">Admin Dashboard</asp:Literal>
+                        </h2>
+                        <span style="color: var(--text-muted); font-size: 0.88rem;">Logged in as: <strong style="color: var(--primary);"><asp:Literal ID="litAdminName" runat="server"></asp:Literal></strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="../Default.aspx" class="btn btn-outline btn-sm">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Storefront
+                        </a>
+                    </div>
+                </div>
+
+                <asp:ContentPlaceHolder ID="AdminContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+        </div>
+    </form>
+</body>
+</html>
